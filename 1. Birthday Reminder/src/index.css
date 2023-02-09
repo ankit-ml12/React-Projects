@@ -142,7 +142,7 @@ main {
 
 .container {
   width: 90vw;
-  margin: 5rem 0;
+  margin: 5rem auto;
   max-width: var(--fixed-width);
   background: var(--clr-white);
   border-radius: var(--radius);
