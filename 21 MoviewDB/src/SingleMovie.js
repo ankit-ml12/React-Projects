@@ -6,9 +6,9 @@ const SingleMovie = () => {
   const { id } = useParams()
   const { isLoading, error, data: movie } = useFetch(`&i=${id}`)
 
-  // if (isLoading) {
-  //   return <div className='loading'></div>
-  // }
+  if (isLoading) {
+    return <div className="loading"></div>
+  }
   if (error.show) {
     return (
       <div className="page-error">
