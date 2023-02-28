@@ -12,7 +12,6 @@ const API_ENDPOINT = 'https://opentdb.com/api.php?'
 const url = ''
 const tempUrl =
   'https://opentdb.com/api.php?amount=10&category=21&difficulty=easy&type=multiple'
-
 const AppContext = React.createContext()
 
 const AppProvider = ({ children }) => {
@@ -76,13 +75,23 @@ const AppProvider = ({ children }) => {
     setIsModalOpen(false)
   }
   useEffect(() => {
-    fetchQuestions(tempUrl)
+    // fetchQuestions(tempUrl)
   }, [])
   const handleChange = (e) => {
-    console.log(e)
+    const name = e.target.name
+    const value = e.target.value
+    setQuize({ ...quiz, [name]: value })
   }
   const handleSubmit = (e) => {
     e.preventDefault()
+    const { amount, category, difficulty } = quiz
+    console.log(amount, category, difficulty)
+    let m = table[category]
+    const tempUrl =
+      'https://opentdb.com/api.php?amount=10&category=21&difficulty=easy&type=multiple'
+    const url = `${API_ENDPOINT}amount=${amount}&category=${m}&difficulty=${difficulty}&type=multiple`
+    console.log('url', url)
+    fetchQuestions(url)
   }
   return (
     <AppContext.Provider
